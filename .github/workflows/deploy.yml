@@ -1,0 +1,43 @@
+name: Deploy to OVH
+
+on:
+  push:
+    branches:
+      - main # Triggers the workflow on pushes to main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          npm install
+          cd ../frontend
+          npm install
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+
+      - name: Deploy to OVH Server
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.OVH_SSH_KEY}}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 51.89.230.239 >> ~/.ssh/known_hosts
+          ssh ubuntu@51.89.230.239 "mkdir -p /home/ubuntu/temp" # Create temp folder
+          scp -r frontend/dist/* ubuntu@51.89.230.239:/home/ubuntu/temp/
+          ssh ubuntu@51.89.230.239 "sudo cp -R /home/ubuntu/temp/* /var/www/html/ && sudo em -rf /home/ubuntu/temp"
