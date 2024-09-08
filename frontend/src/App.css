@@ -1,0 +1,46 @@
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.left-side {
+  flex: 1;
+}
+
+.right-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-book-container,
+.book-list-container,
+.delete-book-container,
+.delete-db-container {
+  border: 1px solid #9ca3af;
+  padding: 10px;
+  background-color: #f3f4f6;
+}
+
+input {
+  padding: 5px;
+  margin: 0 10px 10px 0;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}

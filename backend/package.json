@@ -1,0 +1,23 @@
+{
+  "name": "ghw-cloud-week-backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@replit/database": "3.0.1",
+    "@types/node": "18.0.6",
+    "cors": "2.8.5",
+    "dotenv": "16.4.5",
+    "express": "4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.4"
+  }
+}
