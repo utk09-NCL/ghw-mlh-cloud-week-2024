@@ -37,7 +37,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 51.89.228.199 >> ~/.ssh/known_hosts
-          ssh ubuntu@51.89.228.199 "mkdir -p /home/ubuntu/temp"  # Create temp directory
-          scp -r frontend/dist/* ubuntu@51.89.228.199:/home/ubuntu/temp/
-          ssh ubuntu@51.89.228.199 "sudo cp -R /home/ubuntu/temp/* /var/www/html/ && sudo rm -rf /home/ubuntu/temp"
+          ssh-keyscan -H 51.89.230.239 >> ~/.ssh/known_hosts
+          ssh ubuntu@51.89.230.239 "mkdir -p /home/ubuntu/temp"  # Create temp directory
+          scp -r frontend/dist/* ubuntu@51.89.230.239:/home/ubuntu/temp/
+          ssh ubuntu@51.89.230.239 "sudo cp -R /home/ubuntu/temp/* /var/www/html/ && sudo rm -rf /home/ubuntu/temp"
